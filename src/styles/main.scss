@@ -1,0 +1,1872 @@
+@import "other/sprite";
+@import "other/mixins";
+
+$maket1024: 1150px;
+$maket800: 980px;
+$maket320: 800px;
+
+#mainWrapper {
+  font-family: "Open Sans";
+  overflow: hidden;
+  margin: 0 auto;
+  max-width: 2560px;
+  position: relative;
+
+
+  input[type='submit']:disabled{
+    background: #999;
+    box-shadow: none;
+    color: #fff;
+    opacity: 0.5;
+  }
+
+  .check800lay{
+    display: block;
+    width: 0px;
+    height: 0px;
+    position: absolute;
+    background: transparent;
+    @media only screen and ( min-width: 800px ) {
+      display: none;
+    }
+  }
+
+  .rouble:before {
+    font-family: "ALSRublRegular";
+    content: 'p';
+  }
+  
+  .section{
+    position: relative;
+  }
+  .blockBg {
+    opacity: 0.15;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    background-size: cover;
+    background-position: 50% 100%;
+  }
+
+  #paralax1{
+    background-image: url("../images/b1-img1.jpg");
+    @media only screen and ( max-width: 1920px ) {
+      background-image: url("../images/b1-img1-m.jpg");
+    }
+    @media only screen and ( max-width: 800px ) {
+      background-image: url("../images/b1-img1-s.jpg");
+    }
+  }
+  #paralax2{
+    background-image: url("../images/b3-img1.jpg");
+    background-position: 50% 0%;
+    @media only screen and ( max-width: 1920px ) {
+      background-image: url("../images/b3-img1-m.jpg");
+    }
+    @media only screen and ( max-width: 800px ) {
+      background-image: url("../images/b3-img1-s.jpg");
+    }
+  }
+  #paralax3{
+    background-image: url("../images/b5-img1.jpg");
+    @media only screen and ( max-width: 1920px ) {
+      background-image: url("../images/b5-img1-m.jpg");
+    }
+    @media only screen and ( max-width: 800px ) {
+      background-image: url("../images/b5-img1-s.jpg");
+    }
+  }
+
+  input[type='checkbox'] {
+    cursor: pointer;
+  }
+
+  .custom-checkbox {
+    user-select: none;
+    cursor: pointer;
+    position: relative;
+    display: inline-block;
+  }
+
+  .ie8 .custom-checkbox {
+    zoom: 1;
+  }
+
+  .custom-checkbox > .box {
+    position: relative;
+    display: block;
+    width: 15px;
+    height: 15px;
+    background: #c6ccd4;
+    border-radius: 3px;
+    transition: box-shadow 0.12s ease-in-out;
+  }
+
+  .uncomplete + .box {
+    box-shadow: 0 0 5px 2px red;
+  }
+
+  .custom-checkbox > .box > .tick {
+    position: absolute;
+    left: 1px;
+    top: -2px;
+    width: 15px;
+    height: 6px;
+    border-bottom: 2px solid red;
+    border-left: 2px solid red;
+    transform: rotate(-57deg) skew(-13deg);
+    display: none;
+  }
+
+  .oldie .custom-checkbox > .box > .tick {
+    left: 1px;
+    top: -5px;
+    zoom: 1;
+  }
+
+  .custom-checkbox > input:checked + .box > .tick {
+    display: block;
+  }
+
+  .custom-checkbox.checked > .box > .tick {
+    display: block;
+  }
+
+  .custom-checkbox > input {
+    position: absolute;
+    outline: none;
+    left: 0;
+    top: 0;
+    padding: 0;
+    width: 16px;
+    height: 16px;
+    border: none;
+    margin: 0;
+    opacity: 0;
+    z-index: 1;
+    cursor: pointer;
+  }
+  .purpleH-gradient-under{
+    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#7253ad+0,452f67+100 */
+    background: #7253ad; /* Old browsers */
+    background: -moz-linear-gradient(left, #7253ad 0%, #452f67 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(left, #7253ad 0%,#452f67 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to right, #7253ad 0%,#452f67 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#7253ad', endColorstr='#452f67',GradientType=1 ); /* IE6-9 */
+  }
+  .purpleH-gradient-upper{
+    background-image: -webkit-linear-gradient(right, rgba(50, 25, 87, 0.8) -28%, rgba(18,0,39,.62), rgba(35,13,65,.62) 21%, rgba(99,64,164,0));
+    background-image: -moz-linear-gradient(right, rgba(50, 25, 87, 0.8) -28%, rgba(18,0,39,.62), rgba(35,13,65,.62) 21%, rgba(99,64,164,0));
+    background-image: -o-linear-gradient(right, rgba(50, 25, 87, 0.8) -28%, rgba(18,0,39,.62), rgba(35,13,65,.62) 21%, rgba(99,64,164,0));
+    background-image: -ms-linear-gradient(right, rgba(50, 25, 87, 0.8) -28%, rgba(18,0,39,.62), rgba(35,13,65,.62) 21%, rgba(99,64,164,0));
+    background-image: linear-gradient(to left, rgba(50, 25, 87, 0.8) -28%, rgba(18,0,39,.62), rgba(35,13,65,.62) 21%, rgba(99,64,164,0));
+  }
+  .layout{
+    position: relative;
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 20px;
+    @media only screen and ( max-width: 800px ) {
+      padding: 0 15px;
+    }
+  }
+  .br{
+    display: block;
+  }
+  .br320{
+    @media only screen and (max-width: $maket320){
+      display: block;
+    }
+  }
+
+  .defaultButton{
+    transition: all 0.13s ease-in-out;
+    cursor: pointer;
+    display: inline-block;
+    margin: 0 auto;
+    height: 60px;
+    border-radius: 30px;
+    &:hover{
+      box-shadow: 0px 4px 35px 0px rgba(0, 0, 0, 0.5);
+    }
+    @media only screen and (max-width: $maket800){
+      height: 50px;
+      border-radius: 25px;
+    }
+    @media only screen and (max-width: $maket320){
+      height: 42px;
+      border-radius: 21px;
+    }
+  }
+  
+  /*=========================================*/
+  /*custom*/
+  
+  #b1,#b3,#b5{
+    @extend .purpleH-gradient-under;
+    .paralaxShadow{
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      left: 0;
+      top: 0;
+      @extend .purpleH-gradient-upper;
+    }
+  }
+
+  header { 
+    position: fixed;
+    z-index: 100;
+    top: 0;
+    left: 0;
+    width: 100%;
+    transition: background 0.15s ease-in-out;
+    @media only screen and (max-width: $maket320){
+      background-color: transparent;
+      &.active{
+        height: 100%;
+      }      
+    }
+    .layout { 
+      transition: all 0.15s ease-in-out;
+      height: 65px;
+      @media only screen and (max-width: $maket1024){
+        height: 70px;
+      }
+      @media only screen and (max-width: $maket320){
+        
+      }
+    }
+    &.scroll{
+      background-color: rgba(75, 45, 127, 0.6);
+      @media only screen and (max-width: $maket320){
+        background-color: transparent;
+      }
+      .layout { 
+        height: 65px;
+        @media only screen and (max-width: $maket1024){
+          height: 70px;
+        }
+        @media only screen and (max-width: $maket320){
+          background-color: rgba(75, 45, 127, 0.6);
+          height: 50px;
+          .logo svg{
+            padding-top: 2px;
+          }
+          .menuBlock .mobileButton{
+            top: 22px;
+          } 
+        }
+      }
+    }
+
+    .shadow{
+      display: none;
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: #000;
+      opacity: 0;
+      z-index: 100;
+      left: 0;
+      top: 0;
+      transition: opacity 0.15s ease;
+      @media only screen and (max-width: $maket320){
+        &.active{
+          opacity: 0.5;
+          display: block;
+        }        
+      }
+
+    }
+
+    .layout { 
+      position: static;
+      display: flex;
+      flex-direction: row;
+      display: flex;
+      align-items: center;
+      .logo { 
+        
+        svg { 
+          transition: padding 0.12s ease-in-out;
+          display: block;
+          width: 162px;
+          height: 39px;
+          @media only screen and (max-width: $maket800){
+            width: 146px;
+            height: 30px;
+          }
+          @media only screen and (max-width: $maket320){
+            width: 102px;
+            height: 50px;
+            padding-top: 10px;
+          }
+
+        }
+      }
+
+      .menuBlock { 
+        flex: 0 0 auto;
+        margin-left: auto;
+        margin-bottom: 6px;
+        z-index: 101;
+        @media only screen and (max-width: $maket800){
+          margin-bottom: 4px;
+        }
+
+        .mobileButton { 
+          display: none;
+          position: absolute;
+          right: 28px;
+          top: 34px;
+          z-index: 2;
+          cursor: pointer;
+          transition: all 0.15s ease-in-out;
+          @media only screen and (max-width: $maket320){
+            display: block;
+          }
+          .line{
+            width: 12px;
+            height: 2px;
+            background: #fff;
+            margin-bottom: 2px;
+            &:first-child{
+              transform-origin: 100% 0;
+              transition: all 0.2s ease;
+            }
+            &:nth-child(2){
+              transition: all 0.15s ease;
+              opacity: 1;
+            }
+            &:last-child{
+              transition: all 0.2s ease;
+              transform-origin: 100% 100%;
+            }
+          }
+          &.active{
+            .line{
+              margin-bottom: 4px;
+              &:first-child{
+                transform: rotate(-45deg);
+                width: 18px;
+              }
+              &:nth-child(2){
+                opacity: 0;
+                width: 18px;
+              }
+              &:last-child{
+                transform: rotate(45deg);
+                width: 18px;
+              }
+            }
+          }
+        }
+
+        .menu { 
+          width: 100%;
+          display: flex;
+          flex-direction: row;
+          @media only screen and (max-width: $maket320){
+            position: absolute;
+            right: 0;
+            top: 0;
+            flex-direction: column;
+            justify-content: flex-end;
+            width: 260px;
+            background: #3f2568;
+            padding-left: 29px;
+            padding-top: 82px;
+            padding-bottom: 57px;
+            padding-right: 15px;
+            border-radius: 0 0 0 8px;
+          }
+          .item { 
+            font-size: 15px;
+            height: 34px;
+            line-height: 34px;
+            justify-content: flex-end;
+            margin-left: 40px;
+            color: #fff;
+            cursor: pointer;
+            position: relative;
+            &:first-child{
+              margin-left: 0;
+            }
+            @media only screen and (max-width: $maket800){
+              font-size: 14px;
+              margin-left: 19px;
+            }
+            @media only screen and (max-width: 860px){
+              font-size: 13px;
+              margin-left: 15px;
+            }
+            @media only screen and (max-width: $maket320){
+              font-size: 14px;
+              line-height: 26px;
+              margin-left: 0;
+              height: auto;
+              margin-bottom: 14px;
+              &:last-child{
+                margin-bottom: 0;
+              }
+              &:after{
+                display: none;
+              }
+            }
+            &:after{
+              content: '';
+              background: transparent;
+              width: 100%;
+              height: 2px;
+              position: absolute;
+              bottom: 0;
+              left: 0;
+              transition: all 0.12s ease-in-out;
+            }
+            &:hover{
+              &:after{
+                background: #fff;
+              }
+            }
+          }
+          @media only screen and (max-width: $maket320){
+            transform: translateX(100%);
+            transition: transform 0.2s ease;
+            &.active{
+              transform: translateX(0%)
+            }
+          }
+        }
+      }/*end menuBlock*/
+    }
+  }
+
+  #b1 { 
+    position: relative;
+    .layout { 
+      display: flex;
+      flex-direction: row;
+      padding-top: 222px;
+      padding-bottom: 225px;
+      position: relative;
+      @media only screen and (max-width: $maket1024){
+        padding-top: 194px;
+        padding-bottom: 202px;
+      }
+      @media only screen and (max-width: $maket800){
+        padding-top: 157px;
+        padding-bottom: 132px;
+      }
+      @media only screen and (max-width: $maket320){
+        padding-top: 67px;
+        padding-bottom: 70px;
+        flex-direction: column;
+      }
+      .lc { 
+        color: #fff;
+        padding-top: 16px;
+        margin-right: 40px;
+        @media only screen and (max-width: $maket320){
+          margin-right: 0;
+        }
+        .text1 { 
+          font-family: 'Montserrat';
+          font-size: 48px;
+          line-height: 1.2;
+          font-weight: 500;
+          letter-spacing: 0.5px;
+          @media only screen and (max-width: $maket1024){
+            font-size: 45px;
+          }
+          @media only screen and (max-width: $maket800){
+            font-size: 35px;
+            letter-spacing: 0.3px;
+          }
+          @media only screen and (max-width: $maket320){
+            font-weight: 600;
+            font-size: 20px;
+            text-align: center;
+            letter-spacing: 0.2px;
+          }
+        }
+
+        .text2 { 
+          font-size: 20px;
+          line-height: 27px;
+          margin-top: 34px;
+          @media only screen and (max-width: $maket1024){
+            margin-top: 37px;
+          }
+          @media only screen and (max-width: $maket800){
+            font-size: 16px;
+            margin-top: 28px;
+            line-height: 23px;
+          }
+          @media only screen and (max-width: $maket320){
+            font-size: 13px;
+            line-height: 1.2;
+            margin-top: 22px;
+            text-align: center;
+          }
+        }
+
+        .button { 
+          @extend .defaultButton;
+          border-radius: 30px;
+          background: #139bea;
+          line-height: 58px;
+          white-space: nowrap;
+          font-size: 18px;
+          color: #fff;
+          font-family: 'Montserrat';
+          font-weight: 500;
+          margin-top: 48px;
+          padding: 0 30px;
+          letter-spacing: 0.1px;
+          @media only screen and (max-width: $maket800){
+            font-size: 16px;
+            line-height: 50px;
+            margin-top: 43px;
+            padding: 0 33px;
+          }
+          @media only screen and (max-width: $maket320){
+            line-height: 20px;
+            font-size: 13px;
+            padding: 0;
+            position: absolute;
+            bottom: 3px;
+            left: 50%;
+            transform: translateX(-50%);
+            box-shadow: none;
+          }
+          @media only screen and (max-width: $maket320){
+            $hover: #fff;
+            $bg: #4B2D7F;
+            background-color: transparent;
+            background-position: 0 42%;
+            background-size: 1px 1px;
+            background-image: linear-gradient(#fff 50%, #fff 50%);
+            background-image: linear-gradient(#fff 50%, $hover 50%);
+            background-repeat: repeat-x;
+            box-shadow: none;
+            span{
+                z-index: 1;
+                display: inline;
+                position: relative;
+                text-shadow: -1px 0 0 $bg, -2px 0 0 $bg, 0 1px 0 $bg, 1px 0 0 $bg, 2px 0 0 $bg;
+            }
+            &:hover{
+              box-shadow: none;
+              color: $hover;
+              background-image: linear-gradient(transparent 50%, transparent 50%);
+              span{
+                text-shadow: none;
+              }
+            }
+          }
+        }
+      }
+
+      .rc { 
+        min-width: 340px;
+        @media only screen and (max-width: $maket1024){
+          padding-top: 31px;
+        }
+        @media only screen and (max-width: $maket800){
+          padding-top: 11px;
+          min-width: 270px;
+        }
+        @media only screen and (max-width: $maket320){
+          padding: 30px 15px 0;
+          min-width: 270px; 
+        }
+        .formBlock { 
+          background: #fff;
+          border-radius: 4px;
+          padding: 45px 40px 50px;
+          @media only screen and (max-width: $maket800){
+            padding: 43px 35px 44px;
+          }
+          @media only screen and (max-width: $maket320){
+            padding: 27px 30px 30px;
+          }
+          .title { 
+
+            text-align: justify;
+            font-weight: 500;
+            color: #474747;
+            font-size: 20px;
+            font-family: 'Montserrat';
+            letter-spacing: 0.15px;
+            margin-bottom: 33px;
+            @media only screen and (max-width: $maket800){
+              font-size: 18px;
+              text-align: center;
+              margin-bottom: 31px;
+            }
+            @media only screen and (max-width: $maket320){
+              font-size: 14px;
+              font-weight: 600;
+              text-align: left;
+              margin-bottom: 14px;
+            }
+          }
+        }
+
+        #bid { 
+
+          .row { 
+            position: relative;
+            height: 30px;
+            margin-top: 28px;
+            @media only screen and (max-width: $maket320){
+              margin-top: 14px;
+            }
+            &:first-child{
+              margin-top: 0;
+            }
+            input[type='text']{ 
+              font-family: "Open Sans";
+              position: absolute;
+              bottom: 0;
+              box-sizing: border-box;
+              width: 100%;
+              border: none;
+              padding: 5px 10px 0;
+              height: 30px;
+              border-bottom: 1px solid #afafaf;
+              font-size: 18px;
+              z-index: 1;
+              background: transparent;
+              @media only screen and (max-width: $maket800){
+                font-size: 15px;
+              }
+              &.uncomplete{
+                border-bottom: 1px solid red;
+              }
+            }
+
+            .desc { 
+              transition: all 0.12s ease-out;
+              left: 2px;
+              top: 4px;
+              position: absolute;
+              font-size: 16px;
+              line-height: 28px;
+              color: #474747;
+              @media only screen and (max-width: $maket800){
+                font-size: 14px;
+                left: 0px;
+                top: 6px;
+              }
+            }
+            input[type='text'].active,
+            input[type='text']:focus,
+            input[type='text']:hover{
+              height: 30px;
+              line-height: 28px;
+              &+.desc{
+                top: -20px;
+                font-size: 15px;
+                @media only screen and (max-width: $maket800){
+                  font-size: 13px;
+                  top: -18px;
+                }
+                @media only screen and (max-width: $maket800){
+                  font-size: 13px;
+                  top: -14px;
+                }
+              }
+            }
+          }
+
+          input[type='submit']{
+            margin-top: 50px;
+            border: none;
+            @extend .defaultButton;
+            border-radius: 30px;
+            background: #471493;
+            line-height: 58px;
+            white-space: nowrap;
+            letter-spacing: 0.15px;
+            padding: 0 50px;
+            font-size: 18px;
+            color: #fff;
+            font-family: 'Montserrat';
+            font-weight: 500;
+            cursor: pointer;
+            display: block;
+            width: auto;
+            &.loading{
+              opacity: 0.5;
+              box-shadow: none;
+            }
+            @media only screen and (max-width: $maket800){
+              font-size: 16px;
+              line-height: 48px;
+              padding: 0 35px;
+            }
+            @media only screen and (max-width: $maket320){
+              margin-top: 30px;
+              font-size: 14px;
+              line-height: 42px;
+              width: 100%;
+              display: block;
+            }
+          }
+        }
+      }
+    }
+  }
+  #b2 { 
+    background: #f0f0f0;
+    padding-top: 110px;
+    padding-bottom: 120px;
+    @media only screen and (max-width: $maket1024){
+      padding-bottom: 112px;
+    }
+    @media only screen and (max-width: $maket800){
+      padding-top: 90px;
+      padding-bottom: 98px;
+    }
+    @media only screen and (max-width: $maket320){
+      padding-top: 20px;
+      padding-bottom: 40px;
+      background: #fff;
+    }
+    .layout { 
+
+      .grid { 
+        display: flex;
+        flex-wrap: wrap;
+        margin-left: -10px;
+        margin-right: -10px;
+        @media only screen and (max-width: $maket1024){
+          margin-left: -12px;
+          margin-right: -12px;
+        }
+        @media only screen and (max-width: $maket800){
+          margin-left: -10px;
+          margin-right: -10px;
+        }
+        @media only screen and (max-width: $maket320){
+          flex-direction: column;
+        }
+        .item { 
+          display: flex;
+          padding: 10px;
+          @media only screen and (max-width: $maket1024){
+            padding: 12px;
+          }
+          @media only screen and (max-width: $maket800){
+            padding: 10px;
+          }
+          @media only screen and (max-width: $maket320){
+            padding: 0 15px;
+          }
+          @media only screen and (max-width: $maket320){
+            .iw{
+              border-top: 1px solid #dcdcdc;
+            }             
+            &:first-child .iw{
+              border-top: 0;
+            }
+            &:last-child .iw{
+              padding-top: 12px;
+            }
+          }
+          .iw{
+            display: flex;
+            align-items: center;
+            height: 100%;
+            width: 100%;
+            background: #fff;
+            border-radius: 4px;
+          }
+          &:nth-child(1),
+          &:nth-child(2){
+            width: 50%;
+            @media only screen and (max-width: $maket320){
+              width: 100%;
+            }
+            .iw{
+              display: flex;
+              flex-direction: row;
+              align-items: center;
+              justify-content: center;
+              padding-top: 52px;
+              padding-bottom: 52px;
+              @media only screen and (max-width: $maket800){
+                padding-top: 57px;
+              }
+              @media only screen and (max-width: $maket320){
+                flex-direction: column;
+                padding-top: 16px;
+                padding-bottom: 17px;
+              }
+
+              .textBlock {
+                padding-bottom: 4px;
+                margin-left: 18px;
+                @media only screen and (max-width: $maket320){
+                  padding-bottom: 0;
+                  margin-top: 4px;
+                }
+              }
+            }
+          }
+          &:nth-child(3),
+          &:nth-child(4),
+          &:nth-child(5){
+            text-align: center;
+            width: 33.333%;
+            @media only screen and (max-width: $maket320){
+              width: 100%;
+            }
+            .iw{
+              padding-top: 55px;
+              padding-bottom: 54px;
+              display: flex;
+              flex-direction: column;
+              justify-content: flex-start;
+              @media only screen and (max-width: $maket800){
+                padding-top: 61px;
+                padding-bottom: 66px;
+              }
+              @media only screen and (max-width: $maket320){
+                padding-top: 16px;
+                padding-bottom: 17px;
+              }
+            }
+            .textBlock{
+              @media only screen and (max-width: $maket800){
+                margin-top: 3px;
+              }
+            }
+          }
+          .numverBlock { 
+            font-family: 'Montserrat';
+            font-weight: 800;
+            color: #767676;
+            font-size: 50px;
+            line-height: 50px;
+            letter-spacing: 0.5px;            
+            .count { 
+
+            }
+            .desc{
+              margin-left: 15px;
+              @media only screen and (max-width: $maket320){
+                font-size: 20px;
+                margin-left: 5px;
+              }
+              .rouble{
+                &:before{
+                  color: #767676;
+                  font-size: 47px;
+                  margin-left: -9px;
+                  position: relative;
+                  top: -2px;
+                  @media only screen and (max-width: $maket800){
+                    font-size: 41px;
+                  }
+                  @media only screen and (max-width: $maket320){
+                    font-size: 24px;
+                    line-height: 24px;
+                    top: -1px;
+                    margin-left: -2px;
+                  }
+                }
+              }
+            }
+            @media only screen and (max-width: $maket800){
+              font-size: 45px;
+              font-weight: 700;
+            }
+            @media only screen and (max-width: $maket320){
+              font-weight: 600;
+              font-size: 25px;
+              line-height: 26px;
+            }
+          }
+
+          .textBlock { 
+            color: #5f5f5f;
+            font-size: 18px;
+            line-height: 25px;
+            margin-top: 2px;
+            @media only screen and (max-width: $maket800){
+              font-size: 15px;
+              line-height: 20px;
+            }
+            @media only screen and (max-width: $maket800){
+              margin-top: -2px;
+            }
+            @media only screen and (max-width: $maket320){
+              font-size: 12px;
+              line-height: 1.2;
+            }
+          }
+        }
+      }
+      .buttonOw{
+        text-align: center;
+      }
+      .button { 
+        @extend .defaultButton;
+        line-height: 60px;
+        margin-top: 20px;
+        background: #139bea;
+        padding: 0 75px;
+        letter-spacing: 0.15px;
+        font-weight: 500;
+        color: #ffffff;
+        font-size: 14px;
+        font-family: 'Montserrat';
+        @media only screen and (max-width: $maket800){
+          font-size: 14px;
+          line-height: 50px;
+        }
+        @media only screen and (max-width: $maket320){
+          margin-top: 10px;
+          font-size: 13px;
+          line-height: 41px;
+          width: 100%;
+          padding: 0;
+        }
+      }
+    }
+  }
+
+  #b3 { 
+    color: #fff;
+    padding-top: 155px;
+    padding-bottom: 166px;
+    @media only screen and (max-width: $maket1024){
+      padding-top: 157px;
+    }
+    @media only screen and (max-width: $maket800){
+      padding-top: 101px;
+      padding-bottom: 110px;
+    }
+    @media only screen and (max-width: $maket320){
+      padding-top: 46px;
+    }
+    .layout { 
+      
+      .title { 
+        font-size: 48px;
+        font-weight: 500;
+        font-family: 'Montserrat';
+        margin-bottom: 20px;
+        @media only screen and (max-width: $maket1024){
+          font-size: 45px;
+          margin-bottom: 25px;
+        }
+        @media only screen and (max-width: $maket800){
+          font-size: 35px;
+          font-weight: 400;
+          line-height: 42px;
+          margin-bottom: 43px;
+        }
+        @media only screen and (max-width: $maket320){
+          font-size: 20px;
+          font-weight: 600;
+          line-height: 1.2;
+          text-align: center;
+        }
+      }
+
+      .items { 
+
+        .item { 
+          display: flex;
+          flex-direction: row;
+          border-bottom: 1px solid #fff;
+          width: 100%;
+          align-items: center;
+          padding-top: 36px;
+          padding-bottom: 8px;
+          &:first-child{
+            padding-top: 0;
+          }
+          @media only screen and (max-width: $maket800){
+            padding-top: 34px;
+            padding-bottom: 3px;
+          }
+          .number { 
+            padding-top: 8px;
+            min-width: 54px;
+            width: 54px;
+            font-size: 60px;
+            font-family: 'Montserrat';
+            font-weight: 500;
+            @media only screen and (max-width: $maket800){
+              font-size: 50px;
+              line-height: 50px;
+              font-weight: 500;
+              width: 46px;
+              min-width: 46px;
+              padding-top: 0;
+            }
+            @media only screen and (max-width: $maket320){
+              font-size: 35px;
+              font-weight: 700;
+            }
+          }
+
+          .text { 
+            font-size: 18px;
+            line-height: 26px;
+            @media only screen and (max-width: $maket800){
+              font-size: 16px;
+            }
+            @media only screen and (max-width: $maket320){
+              font-size: 12px;
+              line-height: 1.2;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  #b4 { 
+    padding-top: 107px;
+    padding-bottom: 100px;
+    background: #f5f6f8;
+    @media only screen and (max-width: $maket800){
+      padding-top: 101px;
+    }
+    @media only screen and (max-width: $maket320){
+      padding-top: 34px;
+      padding-bottom: 22px;
+    }
+    .layout { 
+
+      .title { 
+        color: #323232;
+        font-family: 'Montserrat';
+        font-size: 48px;
+        font-weight: 500;
+        padding-left: 45px;
+        margin-bottom: 26px;
+        @media only screen and (max-width: $maket800){
+          font-weight: 400;
+          font-size: 35px;
+          padding: 0;
+          margin-bottom: 0;
+        }
+        @media only screen and (max-width: $maket320){
+          font-weight: 600;
+          font-size: 20px;
+          line-height: 26px;
+          text-align: center;
+        }
+      }
+
+      .partnersBlock { 
+        .owl-nav {
+          position: static;
+          @media only screen and (min-width: 800px){
+            &.desctopHidden{
+              display: none;
+            }
+          }
+          .icon{
+            fill: #fff;
+            width: 15px;
+            height: 28px;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translateX(-50%) translateY(-50%);
+          }
+          .owl-next, .owl-prev {
+            width: 40px;
+            height: 86px;
+            margin-top: -43px;
+            position: absolute;
+            top: 50%;
+            background: #000;
+            opacity: 0.3;
+            transition: all 0.15s ease;
+            @media only screen and (max-width: $maket1024){
+              height: 72px;
+              margin-top: -36px;
+            }
+            @media only screen and (max-width: $maket800){
+              height: 62px;
+              margin-top: -31px;
+            }
+            &.disabled{
+              cursor: default;
+              background: rgba(178, 178, 178, 0.5);
+            }
+            &:not(.disabled):hover{
+              opacity: 0.7;
+            }
+          }
+          .owl-prev {
+            border-radius: 0 8px 8px 0;
+            left: 50px;
+            @media only screen and (max-width: $maket1024){
+              left: 0;
+            }
+          }
+          .owl-next {
+            border-radius: 8px 0 0 8px;
+            right: 50px;
+            @media only screen and (max-width: $maket1024){
+              right: 0;
+            }
+          }
+        }
+        .items { 
+          position: relative;
+          z-index: 2;
+          padding: 52px 50px;
+          overflow: hidden;
+          white-space: nowrap;
+          margin-left: -2.5%;
+          margin-right: -2.5%;
+          font-size: 0;
+          @media only screen and (max-width: $maket1024){
+            padding-left: 0;
+            padding-right: 0;
+          }
+          @media only screen and (max-width: $maket800){
+            padding-top: 41px;
+            padding-bottom: 41px;
+          }
+          @media only screen and (max-width: $maket320){
+            margin-left: -5px;
+            margin-right: -5px;
+            white-space: normal;
+            padding-top: 13px;
+            padding-bottom: 13px;
+          }
+          &.owl-carousel{
+            margin-left: 0;
+            margin-right: 0;
+            padding-bottom: 0;
+            @media only screen and (max-width: $maket800){
+              padding-bottom: 0;
+            }
+            .owl-stage-outer{
+              padding-bottom: 52px;
+              @media only screen and (max-width: $maket800){
+                padding-bottom: 41px;
+              }
+            }
+          }
+          .item { 
+            display: inline-block;
+            vertical-align: top;
+            width: 20%;
+            padding: 0 2.5%;
+            box-sizing: content-box;
+            position: relative;
+            @media only screen and (max-width: $maket320){
+              padding: 5px;
+              width: 50%;
+              box-sizing: border-box;
+            }
+            &.current{
+              &:after, &:before{
+                position: absolute;
+                top: 114px;
+                left: 50%;
+                -webkit-transform: translateX(-50%);
+                -ms-transform: translateX(-50%);
+                transform: translateX(-50%);
+                content: '';
+                width: 0;
+                height: 0;
+                border-right: 20px solid transparent;
+                border-left: 20px solid transparent;
+                border-bottom: 24px solid #fff;
+                @media only screen and (max-width: $maket1024){
+                  top: 105px;
+                }
+                @media only screen and (max-width: $maket800){
+                  top: 80px;
+                }
+              }
+              &:after{
+
+              }
+              &:before{
+                top: 113px;
+                border-bottom-color: #d4d4d4;
+                @media only screen and (max-width: $maket1024){
+                  top: 104px;
+                }
+                @media only screen and (max-width: $maket800){
+                  top: 79px;
+                }
+
+              }
+            }
+            .iconOw{
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              padding: 10px 20px;
+              border-radius: 4px;
+              border: 2px solid #e7e7e7;
+              box-sizing: border-box;
+              height: 86px;
+              @media only screen and (max-width: $maket1024){
+                height: 72px;
+              }
+              @media only screen and (max-width: $maket800){
+                height: 62px;
+              }
+              @media only screen and (max-width: $maket320){
+                padding: 5px;
+                position: relative;
+
+              }
+              img{
+                display: block;
+                max-width: 90%;
+                max-height: 90%;
+                width: auto;
+                height: auto;
+              }
+              &.slon{
+                background: #01152f;
+                border: none;
+              }
+              &.advert{
+                border: none;
+                /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#253665+0,27437a+100 */
+                background: #253665; /* Old browsers */
+                background: -moz-linear-gradient(top, #253665 0%, #27437a 100%); /* FF3.6-15 */
+                background: -webkit-linear-gradient(top, #253665 0%,#27437a 100%); /* Chrome10-25,Safari5.1-6 */
+                background: linear-gradient(to bottom, #253665 0%,#27437a 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+                filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#253665', endColorstr='#27437a',GradientType=0 ); /* IE6-9 */
+              }
+            }
+            .icon { 
+              
+            }
+          }
+          .owl-item{
+            .item{
+              width: 100%;
+              padding: 0;
+            }
+          }
+        }/*end items*/
+        .descriptions{ 
+          //height: 400px;
+          margin-top: -2px;
+          position: relative;
+          z-index: 1;
+          padding: 0 50px;
+          @media only screen and (max-width: $maket1024){
+            padding: 0;
+          }
+          @media only screen and (max-width: $maket320){
+            display: none;
+          }
+          .item{
+            // position: absolute;
+            // left: 0;
+            // top: 0;
+            border: 1px solid #d4d4d4;
+            border-radius: 4px;
+            padding: 47px 50px 48px;
+            overflow: hidden;
+            position: relative;
+            background: #fff;
+            opacity: 0;
+            z-index: 0;
+            transition: all 0.15s ease;
+            display: none;
+            &.current{
+              display: block;
+              opacity: 1;
+              z-index: 1;
+            }
+            
+            .personBlock { 
+              display: flex;
+              align-items: center;
+              margin-bottom: 16px;
+              .imgW{
+                width: 70px;
+                height: 70px;
+                overflow: hidden;
+                position: relative;
+                img{
+                  position: absolute;
+                  top: 0;
+                  bottom:0;
+                  left: 0;
+                  right: 0;
+                  margin: auto;
+                  max-width: 100%;
+                  max-height: 100%;
+                  width: auto;
+                  height: auto;
+                }
+              }
+              .rc{
+                padding-top: 5px;
+                margin-left: 19px;
+                .name { 
+                  color: #474747;
+                  font-size: 16px;
+                  line-height: 26px;
+
+                }
+
+                .position { 
+                  margin-top: 2px;
+                  font-size: 14px;
+                  color: #656565;
+                }
+              }
+            }
+
+            .text { 
+              font-size: 16px;
+              color: #474747;
+              margin-bottom: 10px;
+              padding: 0 4px;
+            }
+
+            .link { 
+              float: right;
+              font-size: 14px;
+              color: #0152be;
+              text-decoration: underline;
+            }
+          }
+        }
+      }
+    }
+  }
+
+
+  #b5 { 
+    padding-top: 118px;
+    padding-bottom: 229px;
+    @media only screen and (max-width: $maket800){
+      padding-top: 99px;
+      padding-bottom: 271px;
+    }
+    @media only screen and (max-width: $maket320){
+      padding-top: 26px;
+      padding-bottom: 127px;
+    }
+    .layout { 
+
+      .title { 
+        color: #fff;
+        font-size: 48px;
+        line-height: 48px;
+        font-family: 'Montserrat';
+        font-weight: 500;
+        text-align: center;
+        margin-bottom: 53px;
+        @media only screen and (max-width: $maket1024){
+          font-size: 45px;
+        }
+        @media only screen and (max-width: $maket800){
+          font-size: 35px;
+          margin-bottom: 40px;
+        }
+        @media only screen and (max-width: $maket320){
+          font-size: 19px;
+          line-height: 26px;
+          font-weight: 600;
+          margin-bottom: 13px;
+        }
+      }
+
+      .whyBlock { 
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        color: #fff;
+        padding: 0 50px;
+        margin-bottom: 50px;
+        @media only screen and (max-width: $maket800){
+          padding: 0;
+          margin-bottom: 71px;
+        }
+        @media only screen and (max-width: $maket320){
+          flex-wrap: wrap;
+          margin-bottom: 19px;
+        }
+        .item { 
+          display: flex;
+          flex-direction: row;
+          justify-content: flex-start;
+          .number { 
+            font-size: 90px;
+            line-height: 84px;
+            font-weight: 700;
+            font-family: 'Montserrat';
+            opacity: 0.2;
+            padding-right: 8px;
+            @media only screen and (max-width: $maket800){
+              font-size: 70px;
+              line-height: 68px;
+            }
+            @media only screen and (max-width: $maket320){
+              font-size: 35px;
+              font-weight: 700;
+              width: 26px;
+              min-width: 26px;
+              padding-right: 0px;
+              line-height: 43px;
+            }
+          }
+
+          .text { 
+            border-left: 1px solid #fff;
+            font-size: 20px;
+            line-height: 1.2;
+            padding-left: 17px;
+            padding-top: 5px;
+            padding-bottom: 15px;
+            @media only screen and (max-width: $maket800){
+              font-size: 16px;
+              padding-top: 9px;
+              padding-bottom: 10px;
+            }
+            @media only screen and (max-width: $maket320){
+              font-size: 12px;
+              padding-left: 7px;
+            }
+          }
+        }
+        .item:nth-child(1){
+          .number:after{
+            content: '1';
+          }
+        }
+        .item:nth-child(2){
+          @media only screen and (max-width: $maket320){
+            order: 3;
+            width: 100%;
+            margin-top: 19px;
+            .br{
+              display: none;
+            }
+          }
+          .number:after{
+            content: '2';
+            @media only screen and (max-width: $maket320){
+              content: '3';
+            }
+          }
+        }
+        .item:nth-child(3){
+          @media only screen and (max-width: $maket320){
+            order: 2;
+          }
+          .number:after{
+            content: '3';
+            @media only screen and (max-width: $maket320){
+              content: '2';
+            }
+          }
+        }
+      }
+
+      .tableBlock { 
+        padding-bottom: 10px;
+        .lc{
+
+        }
+        .rc{
+          min-width: 32%;
+          width: 32%;
+          @media only screen and (max-width: $maket800){
+            min-width: 82px;
+            width: 82px;
+          }
+          @media only screen and (max-width: $maket320){
+            min-width: 68px;
+            width: 68px;
+          }
+        }
+        .head { 
+          font-size: 18px;
+          line-height: 26px;
+          color: #000;
+          display: flex;
+          margin-left: -15px;
+          margin-right: -15px;
+          @media only screen and (max-width: $maket1024){
+            font-size: 16px;
+          }
+          @media only screen and (max-width: $maket800){
+            font-size: 14px;
+            line-height: 16px;
+          }
+          @media only screen and (max-width: $maket320){
+            font-size: 12px;
+            line-height: 14px;
+          }
+          .h__title { 
+            width: 50%;
+            padding: 0 15px;
+            @media only screen and (max-width: $maket320){
+              display: none;
+              width: 100%;
+              &:first-child{
+                display: block;
+              }
+            }
+            .iw{
+              padding: 10px;
+              padding-bottom: 0;
+              background: #fff;
+              display: flex;
+              border-radius: 5px 5px 0 0;
+              @media only screen and (max-width: $maket800){
+
+              }
+              .lc,.rc{
+                background: #eee9fc;
+                border: 1px solid #d6d6d6;
+                border-bottom: none;
+                padding: 13px 30px;
+                display: flex;
+                align-items: center;
+                @media only screen and (max-width: $maket800){
+                  padding: 13px 10px;
+                }
+                @media only screen and (max-width: $maket320){
+                  padding: 7px 10px;
+                }
+              }
+              .lc { 
+                width: 100%;
+              }
+
+              .rc { 
+                border-left: none;
+                margin-left: auto;
+                @media only screen and (max-width: $maket1024){
+                  padding-left: 15px;
+                  padding-right: 15px;
+                  justify-content: center;
+                  text-align: center;
+                }
+                @media only screen and (max-width: $maket800){
+                  padding-left: 5px;
+                  padding-right: 5px;
+                }
+              }
+            }
+          }
+        }
+
+        .items { 
+          font-size: 16px;
+          line-height: 26px;
+          color: #474747;
+          display: flex;
+          flex-wrap: wrap;
+          margin-left: -15px;
+          margin-right: -15px;
+          @media only screen and (max-width: $maket1024){
+            font-size: 15px;
+          }
+          @media only screen and (max-width: $maket800){
+            font-size: 13px;
+          }
+          @media only screen and (max-width: $maket320){
+            font-size: 12px;
+            line-height: 14px;
+          }
+          .item { 
+            padding: 0 15px;
+            width: 50%;
+            display: flex;
+            @media only screen and (max-width: $maket320){
+              width: 100%;
+            }
+            &.extra{
+              display: none;
+            }
+            .iw{
+              background: #fff;
+              width: 100%;
+              display: flex;
+              padding: 0 10px;
+              position: relative;
+              &:after{
+                position: absolute;
+                content: '';
+                width: 100%;
+                background: #fff;
+                height: 10px;
+                border-radius: 0 0 5px 5px;
+                border: 1px solid #d6d6d6;
+                border-top: none;
+                left: 0;
+                top: 100%;
+                box-sizing: border-box;
+              }
+              .lc,.rc{
+                background: #fff;
+                border: 1px solid #d6d6d6;
+                border-top: none;
+                padding: 6px 30px;
+                @media only screen and (max-width: $maket800){
+                  padding: 7px 10px;
+                }
+              }
+              .lc{
+                width: 100%;
+              }
+              .rc{
+                border-left: none;
+                margin-left: auto;
+                @media only screen and (max-width: $maket1024){
+                  padding-left: 15px;
+                  padding-right: 15px;
+                  text-align: center;
+                }
+                @media only screen and (max-width: $maket800){
+                  padding-left: 5px;
+                  padding-right: 5px;                  
+                }
+              }
+            }
+            &:nth-child(1),
+            &:nth-child(2){
+              .iw{
+                .lc,.rc{
+                  border-top: 1px solid #d6d6d6;
+                }
+              }
+            }
+            @media only screen and (max-width: $maket320){
+              &:nth-child(2){
+                .iw{
+                  .lc,.rc{
+                    border-top: none;
+                  }
+                }
+              }
+            }
+            @media only screen and (min-width: $maket320){
+              &:nth-child(4n+3),
+              &:nth-child(4n+4){
+                .iw{
+                  .lc,.rc{
+                    background: #eee9fc;
+                  }
+                  .lc{
+
+                  }
+                  .rc{
+
+                  }
+                }
+              }
+            }
+            @media only screen and (max-width: $maket320){
+              &:nth-child(even){
+                .iw{
+                  .lc,.rc{
+                    background: #eee9fc;
+                  }
+                  .lc{
+
+                  }
+                  .rc{
+
+                  }
+                }
+              }
+            }
+
+            .name { 
+
+            }
+            .price { 
+              margin-left: auto;
+              .rouble { 
+
+              }
+            }
+          }
+        }
+      }
+      .buttonOw{
+        margin-top: 30px;
+        text-align: center;
+        @media only screen and (max-width: $maket800){
+          margin-top: 36px;
+        }
+        @media only screen and (max-width: $maket320){
+          margin-top: 20px;
+        }
+      }
+      .showMore { 
+        @extend .defaultButton;
+        background: #139bea;
+        font-size: 18px;
+        line-height: 58px;
+        padding: 0 110px;
+        font-weight: 500;
+        color: #fff;
+        font-family: 'Montserrat';
+
+        .count { 
+          
+        }
+        @media only screen and (max-width: $maket800){
+          font-size: 16px;
+          line-height: 48px;
+          padding: 0 50px;
+        }
+        @media only screen and (max-width: $maket320){
+          font-size: 13px;
+          line-height: 40px;
+          width: 100%;
+          padding: 0;
+        }
+      }
+
+      .extraButtons { 
+        text-align: center;
+        margin-top: 200px;
+        @media only screen and (max-width: $maket800){
+          margin-top: 170px;
+        }
+        @media only screen and (max-width: $maket320){
+          margin-top: 0;
+        }
+        .button { 
+          @extend .defaultButton;
+          background: #fff;
+          font-size: 18px;
+          line-height: 58px;
+          padding: 0 60px;
+          font-weight: 500;
+          color: #139bea;
+          font-family: 'Montserrat';
+          letter-spacing: 0.2px;
+          @media only screen and (max-width: $maket800){
+            font-size: 16px;
+            line-height: 52px;
+            padding: 0 45px;
+          }
+          @media only screen and (max-width: $maket320){
+            font-size: 13px;
+            line-height: 40px;
+            width: 100%;
+            padding: 0;
+            margin-top: 20px;
+          }
+        }
+
+        .help { 
+          @extend .defaultButton;
+          background: rgba(#fff, 0.2);
+          border: 2px solid #fff;
+          font-size: 18px;
+          line-height: 56px;
+          padding: 0 70px;
+          font-weight: 500;
+          color: #fff;
+          font-family: 'Montserrat';
+          letter-spacing: 0.2px;
+          margin-left: 97px;
+          @media only screen and (max-width: $maket800){
+            font-size: 16px;
+            line-height: 46px;
+            padding: 0 50px;
+            margin-left: 125px;
+          }
+          @media only screen and (max-width: $maket320){
+            font-size: 13px;
+            line-height: 36px;
+            width: 100%;
+            padding: 0;
+            margin-left: 0;
+            margin-top: 20px;
+          }
+        }
+      }
+    }
+  }
+
+  footer { 
+    color: #fff;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 22px 0;
+    font-size: 16px;
+    @media only screen and (max-width: $maket800){
+      font-size: 14px;
+      padding: 22px 0 30px;
+    }
+    @media only screen and (max-width: $maket320){
+      font-size: 11px;
+      line-height: 18px;
+      padding: 22px 0 18px;
+    }
+    .layout { 
+
+      .adress { 
+        display: inline;
+        @media only screen and (max-width: $maket1024){
+          display: block;
+          margin-bottom: 4px;
+        }
+        @media only screen and (max-width: $maket320){
+          margin-bottom: 0;
+        }
+      }
+
+      .phone { 
+
+        a { 
+          margin-left: 8px;
+          color: #fff;
+          text-decoration: underline;
+          &:hover{
+            text-decoration: none;
+          }
+        }
+      }
+
+      .mail { 
+        @media only screen and (max-width: $maket320){
+          display: block;
+        }
+        a { 
+          color: #fff;
+          margin-left: 8px;
+          text-decoration: underline;
+          &:hover{
+            text-decoration: none;
+          }
+        }
+      }
+    }
+  }
+
+
+
+
+}
