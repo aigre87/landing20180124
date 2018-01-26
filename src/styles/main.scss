@@ -1937,7 +1937,13 @@ $maket320: 800px;
         box-sizing: border-box;
         height: 30px;
       }
-      .select2-selection__arrow{
+      .select2-selection__arrow .icon{
+        transition: all 0.12s ease-in-out;
+      }
+      &:hover{
+        .select2-selection__arrow .icon{
+          stroke: #474747;
+        }
       }
     }
 
