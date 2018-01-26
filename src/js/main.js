@@ -62,18 +62,20 @@
 
   /*ОТКЛЮЧЕНИЕ ВКЛЮЧЕНИЕ СКРОЛА END*/
   /*PAGE GLOBAL*/
-  function menuscrollto() {
-    $(".menuBlock .menu .item").on("click", function(e) {
+  function linkscrollto() {
+    $("*[data-scroll]").on("click", function(e) {
       var $this = $(this),
         dataScroll = $this.attr("data-scroll");
 
       if (typeof dataScroll == 'undefined') { return false; }
       e.preventDefault();
       disableScroll();
-      mobileMenu("close");
+      if( $(e.target).closest(".menuBlock").length > 0 ){
+        mobileMenu("close");
+      }
       TweenLite.to(window, 0.8, {
         ease: Sine.easeInOut,
-        scrollTo: $("" + dataScroll + "").offset().top,
+        scrollTo: $("" + dataScroll + "").offset().top - $("header").outerHeight(),
         onComplete: function() {
           enableScroll();
         }
@@ -81,54 +83,12 @@
     });
   }
 
-  function toogleTable() {
-    var $b = $("#b5"),
-      $button = $b.find(".showMore"),
-      $itemsWrapper = $b.find(".tableBlock"),
-      $extraItems = $b.find(".items .item.extra");
 
-    TweenMax.set($extraItems, { autoAlpha: 0 });
-    $button.on("click", function() {
-      //TweenMax.killTweensOf( $itemsWrapper );
-      if (!$b.hasClass("open")) {
-        $b.add($button).addClass("open");
-        var startH = $itemsWrapper.outerHeight();
-        TweenMax.set($itemsWrapper, { clearProps: "all" });
-        $extraItems.show();
-        var endH = $itemsWrapper.outerHeight();
-        TweenMax.to($extraItems, .15, { autoAlpha: 1 });
-        TweenMax.set($itemsWrapper, { height: startH });
-        TweenMax.to($itemsWrapper, .3, {
-          height: endH,
-          onComplete: function() {
-            TweenMax.set($itemsWrapper, { clearProps: "all" });
-          }
-        });
-      } else {
-        $b.add($button).removeClass("open");
-        var startH = $itemsWrapper.outerHeight();
-        TweenMax.set($itemsWrapper, { clearProps: "all" });
-        $extraItems.hide();
-        var endH = $itemsWrapper.outerHeight();
-        $extraItems.show();
-        TweenMax.set($itemsWrapper, { height: startH });
-        TweenMax.to($extraItems, .15, { autoAlpha: 0 });
-        TweenMax.to($itemsWrapper, .3, {
-          height: endH,
-          onComplete: function() {
-            $extraItems.hide();
-            TweenMax.set($itemsWrapper, { clearProps: "all" });
-          }
-        });
-      }
-    });
-  }
+  function formsActions() {
+    var $forms = $(".formBlock form"),
+        $form1 = $("#bid");
 
-
-  function formBid() {
-    var $form = $("#bid");
-
-    $form.find("input[name='name']").one("focus", function() {
+    $forms.find("input[name='name']").one("focus", function() {
       $(this).click();
     }).inputmask("A{2,40}", {
       definitions: {
@@ -149,10 +109,10 @@
       "oncomplete": function() {
         $(this).addClass("complete active");
         $(this).removeClass("uncomplete");
-
       }
     });
-    $form.find("input[name='email']").one("focus", function() {
+
+    $forms.find("input[name='email']").one("focus", function() {
       $(this).click();
     }).inputmask("email", {
       "onincomplete": function() {
@@ -170,13 +130,59 @@
       }
     });
 
-    var submit = $form.find("input[type='submit']");
+    $forms.find("input[name='password']").on("focus change", function() {
+        if ($(this).val().trim().length > 0) {
+          $(this).addClass("active complete");
+        } else {
+          $(this).removeClass("active complete"); 
+        }
+    });
 
-    $form.on('submit', function(event) {
+
+    $("#b1 input[type='checkbox'][name='rules']").on("change", function(){
+      var $this = $(this);
+      if ($this.prop('checked')) {
+          $this.addClass("complete");
+          $this.removeClass("uncomplete");
+      } else {
+          $this.addClass("uncomplete");
+          $this.removeClass("complete");
+      }
+      $("input[type='checkbox'][name='rules']").prop( "checked",  $this.is(':checked') );
+    });
+
+    $("body").on("click", ".rulesBlock .desc_txt", function(){
+      var $inpt = $(this).closest(".rulesBlock").find("input")
+      $inpt.prop( "checked",  !$inpt.is(':checked') );
+      $inpt.trigger("change");
+    })
+
+
+    $forms.on('submit', function(event) {
+      var $thisForm = $(this),
+          submit = $thisForm.find("input[type='submit']");
       if (submit.hasClass("loading")) { return false; }
+
+      if( $thisForm.hasClass("hidden") ){
+        var $block = $(".formBlock");
+        var startH = $block.outerHeight();
+        $forms.not($thisForm).addClass("hidden");
+        $thisForm.removeClass("hidden");
+        var endH = $block.outerHeight();
+        TweenMax.set($block, { height: startH });
+        TweenMax.to($block, 0.2, {
+            height: endH,
+            onComplete: function() {
+                TweenMax.set($block, { clearProps: "all" });
+            }
+        });
+
+        return false;
+      }
+
       if (
-        //$form.find("input[name='rules']:not(.complete)").length > 0 ||
-        $form.find("input.ajax:not(.complete)").length > 0
+        $thisForm.find("input.ajax:not(.complete)").length > 0 ||
+        $thisForm.find("input[name='rules']:not(.complete)").length > 0
       ) {
         $.magnificPopup.open({
           items: {
@@ -196,15 +202,15 @@
           },
           midClick: true // allow opening popup on middle mouse click. Always set it to true if you don't provide alternative source.
         });
-        $form.find("input.ajax").each(function() {
+        $thisForm.find("input.ajax.need").each(function() {
           var $this = $(this);
-          if (!$this.inputmask("isComplete")) {
+          if (!$this.inputmask("isComplete") ) {
             $this.addClass("uncomplete");
           }
         });
-        // if (!$form.find("input[name='rules']").prop('checked')) {
-        //     $form.find("input[name='rules']").addClass("uncomplete");
-        // }
+        if (!$forms.find("input[name='rules']").prop('checked')) {
+            $forms.find("input[name='rules']").addClass("uncomplete");
+        }
 
         return false;
       }
@@ -213,7 +219,7 @@
       submit.addClass('loading');
 
       var data = {};
-      $form.find("input.ajax").each(function(index, one) {
+      $thisForm.find("input.ajax").each(function(index, one) {
         var value = decodeURIComponent(this.value);
         data[this.name] = isJSON(value) ? JSON.parse(value) : value;
       });
@@ -221,7 +227,7 @@
 
       $.ajax({
         type: 'POST',
-        url: $form.attr("action"),
+        url: $thisForm.attr("action"),
         data: data,
         dataType: 'json',
         success: function(response) {
@@ -294,135 +300,140 @@
     });
   }
 
+  function getScriptForm() {
 
-  function b4Slider() {
-    var myInterval;
+      $("*[data-action='getScript_Js']").on("click", function(e) {
+          var $this = $(this),
+              initTarifValue = $this.attr("data-select");
 
-    var owl = $("#b4 .partnersBlock .items");
-    if (owl.length == 0) { return false; }
+          e.preventDefault();
 
-    var lay800;
-    if ($('.check800lay').is(':visible')) {
-      lay800 = "lt800";
-    } else {
-      lay800 = "gt800";
-    }
+          var $form = $(".getScriptForm");
+
+          $.magnificPopup.open({
+              items: {
+                  src: "<div class='defaultPopupContent mfp-with-anim'>" + $form[0].outerHTML + "<div class='response'></div></div>",
+                  type: 'inline'
+              },
+              removalDelay: 500, //delay removal by X to allow out-animation
+              closeBtnInside: true,
+              mainClass: 'getScript_Js-popup mfp-with-zoom',
+              callbacks: {
+                  beforeOpen: function() {
+                      this.st.mainClass = "getScript_Js-popup mfp-zoom-in defaultPopup";
+                  },
+                  open: function() {
+
+                      var $form = $(".mfp-content .getScriptForm");
+
+                      if( initTarifValue ){
+                        $form.find("*[name='tarif']").val(initTarifValue);
+                      }
+                      
+
+                      $form.find("input[name='name']").one("focus", function(){
+                          $(this).click();
+                      }).inputmask("A{2,40}",{ 
+                          definitions: {
+                              "A": {
+                                validator: "[а-яА-ЯA-Za-z0-9 ]",
+                                cardinality: 1
+                              }
+                          },
+                          "onincomplete": function(){ 
+                              $(this).removeClass("complete"); 
+                              $(this).addClass("uncomplete");
+                          },
+                          "oncomplete": function(){ 
+                              $(this).addClass("complete");
+                              $(this).removeClass("uncomplete");
+                          }
+                      });
+                      $form.find("input[name='email']").one("focus", function(){
+                          $(this).click();
+                      }).inputmask("email", {
+                          "onincomplete": function() {
+                              $(this).removeClass("complete");
+                              $(this).addClass("uncomplete");
+                          },
+                          "oncomplete": function() {
+                              $(this).addClass("complete");
+                              $(this).removeClass("uncomplete");
+                          }
+                      });
+                      $form.find("input[name='phone']").one("focus", function(){
+                          $(this).click();
+                      }).inputmask("+7(999)999-99-99", {
+
+                      });
+
+                      var submit = $form.find("input[type='submit']");
+                      $form.on('submit', function(event) {
+                          if( submit.hasClass("loading") ){ return false; }
+                          if ( $form.find("input.ajax:not(.complete)").length > 0 ||
+                                $form.find("input[name='rules']:not(.complete)").length > 0
+                           ) {
+                              $(".mfp-content .response").removeClass("error good").html("Заполните необходимые поля").addClass("error");
+
+                              $form.find("input.ajax.need").each(function() {
+                                  var $this = $(this);
+                                  if ( !$this.inputmask("isComplete") ) {
+                                      $this.addClass("uncomplete");
+                                  }
+                              });
+
+                              if (!$form.find("input[name='rules']").prop('checked')) {
+                                  $form.find("input[name='rules']").addClass("uncomplete");
+                              }
+
+                              return false;
+                          }
+
+                          event.preventDefault();
+                          submit.addClass('loading');
+
+                          var data = {};
+                          $form.find(".ajax").each(function(index, one) {
+                              var value = decodeURIComponent(this.value);
+                              data[this.name] = isJSON(value) ? JSON.parse(value) : value;
+                          });
 
 
-    function isChangePageLayout() {
-      if ($('.check800lay').is(':visible') && lay800 == "gt800") {
-        lay800 = "lt800";
-        return true;
-      } else if (!$('.check800lay').is(':visible') && lay800 == "lt800") {
-        lay800 = "gt800";
-        return true;
-      } else {
-        return false;
-      }
-    }
+                          $.ajax({
+                              type: 'POST',
+                              url: $form.attr("action"),
+                              data: data,
+                              dataType: 'json',
+                              success: function(response) {
+                                  submit.removeClass('loading');
+                                  if (response.status != 'ok') {
+                                      $(".mfp-content .response").removeClass("error good").html("Ошибка сервера, попробуйте отправить еще раз или позвоните по телефону +7 (495) 120-32-30").addClass("error");
+                                  } else {
+                                      $(".mfp-content .response").removeClass("error good").html("Заявка принята, спасибо. В ближайшее время мы свяжемся с вами<br/><br/>Если у вас есть вопросы - звоните, будем рады:<br/>+7 (495) 120-32-30").addClass("good");
+                                      submit.prop('disabled', true);
+                                  }
 
-    function createSlider() {
-      owl.addClass("owl-carousel");
-      var time = 8000;
 
-      owl.owlCarousel({
-        loop: false,
-        items: 4,
-        slideBy: 4,
-        navRewind: false,
-        margin: 40,
-        nav: true,
-        autoHeight: false,
-        autoplay: true,
-        autoplayTimeout: time,
-        autoplayHoverPause: true,
-        smartSpeed: 400,
-        navText: ['<svg class="icon"><use xlink:href="../images/symbol/sprite.svg#ico-leftArrow"></use></svg>',
-          '<svg class="icon"><use xlink:href="../images/symbol/sprite.svg#ico-rightArrow"></use></svg>'
-        ],
-        responsive: {
-          0: {
-            margin: 10,
-          },
-          980: {
-            margin: 20,
-          },
-          1150: {
-            margin: 40,
-          }
-        }
+                              },
+                              error: function() {
+                                  $(".mfp-content .response").removeClass("error good").html("При отправке произошла ошибка").addClass("error");
+                              }
+                          });
+
+                      });
+
+                  },
+                  beforeClose: function() {
+
+                  },
+              },
+              midClick: true // allow opening popup on middle mouse click. Always set it to true if you don't provide alternative source.
+          });
+
       });
-
-      owl.on("click", function() {
-        owl.trigger('stop.autoplay.owl');
-        clearInterval(myInterval);
-      });
-      $("#b4 .descriptions").on("click", function() {
-        owl.trigger('stop.autoplay.owl');
-        clearInterval(myInterval);
-      });
-
-
-      owl.find(".owl-item").on("click", function() {
-        var $this = $(this),
-          thisIndex = $this.index(),
-          $sliderOwlItems = $("#b4 .partnersBlock .owl-item"),
-          $sliderItems = $sliderOwlItems.find(".item"),
-          $descitems = $("#b4 .descriptions .item");
-
-        $sliderOwlItems.add($descitems).add($sliderItems).removeClass("current");
-        $this.add($this.find(".item")).add($descitems.eq(thisIndex)).addClass("current");
-      });
-
-      myInterval = setInterval(function() {
-        var $cur = owl.find(".owl-item:has(.item.current)");
-
-        if ($cur.next(".owl-item").length > 0) {
-          var $cur = $cur.next(".owl-item"),
-            thisIndex = $cur.index(),
-            $sliderOwlItems = $("#b4 .partnersBlock .owl-item"),
-            $sliderItems = $sliderOwlItems.find(".item"),
-            $descitems = $("#b4 .descriptions .item");
-
-
-          $sliderOwlItems.add($descitems).add($sliderItems).removeClass("current");
-          $cur.add($cur.find(".item")).add($descitems.eq(thisIndex)).addClass("current");
-        } else {
-          var $cur = owl.find(".owl-item").eq(0),
-            thisIndex = $cur.index(),
-            $sliderOwlItems = $("#b4 .partnersBlock .owl-item"),
-            $sliderItems = $sliderOwlItems.find(".item"),
-            $descitems = $("#b4 .descriptions .item");
-
-
-          owl.trigger("to.owl.carousel", [0, false, true]);
-          $sliderOwlItems.add($descitems).add($sliderItems).removeClass("current");
-          $cur.add($cur.find(".item")).add($descitems.eq(thisIndex)).addClass("current");
-        }
-      }, time / 4);
-    }
-
-    if (lay800 == "gt800") {
-      createSlider();
-    }
-
-    $(window).on("debouncedresize", function(event) {
-      if (lay800 == "lt800" && isChangePageLayout()) {
-        createSlider();
-      } else if (lay800 == "gt800" && isChangePageLayout()) {
-        var $sliderOwlItems = $("#b4 .partnersBlock .owl-item"),
-            $sliderItems = $sliderOwlItems.find(".item"),
-            $descitems = $("#b4 .descriptions .item");
-        $sliderOwlItems.add($descitems).add($sliderItems).removeClass("current");
-
-        owl.trigger('stop.autoplay.owl');
-        clearInterval(myInterval);
-        owl.trigger('destroy.owl.carousel');
-        owl.removeClass("owl-carousel");
-      }
-    });
-
   }
+
+
 
   function mobileMenu(trigger) {
     var $button = $("header .mobileButton"),
@@ -461,10 +472,9 @@
   $(document).ready(function() {
     svg4everybody({});
     mobileMenu("init");
-    toogleTable();
-    menuscrollto();
-    formBid();
-    b4Slider();
+    linkscrollto();
+    formsActions();
+    getScriptForm();
   });
 
   // $(window).on("debouncedresize", function(event) {
