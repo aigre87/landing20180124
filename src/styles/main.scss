@@ -44,14 +44,16 @@ $maket320: 800px;
     cursor: default !important;
   }
 
-  .check800lay{
-    display: block;
+  .checkLay-lt800{
+    display: none;
     width: 0px;
     height: 0px;
+    margin: 0;
+    padding: 0;
     position: absolute;
     background: transparent;
-    @media only screen and ( min-width: 800px ) {
-      display: none;
+    @media only screen and ( max-width: 800px ) {
+      display: block;
     }
   }
 
@@ -1263,9 +1265,10 @@ $maket320: 800px;
               max-width: 100%;
               border-radius: 20px;
               cursor: pointer;
-              transition: background 0.12s ease-in-out;
+              transition: all 0.12s ease-in-out;
               &:hover{
                 background: lighten(#0027a5, 10%);
+                box-shadow: 0px 4px 35px 0px rgba(0, 0, 0, 0.5);
               }
               @media only screen and (max-width: $maket320){
                 height: 42px;
@@ -1329,11 +1332,12 @@ $maket320: 800px;
             font-size: 18px;
             line-height: 63px;
             background: #fffe8e;
-            transition: background 0.12s ease-in-out;
+            transition: all 0.12s ease-in-out;
             border-radius: 20px;
             cursor: pointer;
             &:hover{
               background: darken(#fffe8e, 10%);
+              box-shadow: 0px 4px 35px 0px rgba(0, 0, 0, 0.5);
             }
             @media only screen and (max-width: $maket1024){
               margin-top: 12px;
@@ -1523,11 +1527,12 @@ $maket320: 800px;
           margin: 0 auto;
           background: #0027a5;
           border-radius: 20px;
-          transition: background 0.12s ease-in-out;
+          transition: all 0.12s ease-in-out;
           text-align: center;
           justify-content: center;
           cursor: pointer;
           &:hover{
+            box-shadow: 0px 4px 35px 0px rgba(0, 0, 0, 0.5);
             background: lighten(#0027a5, 10%);
           }
           .txt { 
@@ -1653,10 +1658,11 @@ $maket320: 800px;
         font-size: 18px;
         line-height: 63px;
         background: #fffe8e;
-        transition: background 0.12s ease-in-out;
+        transition: all 0.12s ease-in-out;
         border-radius: 20px;
         cursor: pointer;
         &:hover{
+          box-shadow: 0px 4px 35px 0px rgba(0, 0, 0, 0.5);
           background: darken(#fffe8e, 10%);
         }
         @media only screen and (max-width: $maket1024){
@@ -1743,6 +1749,18 @@ $maket320: 800px;
       }
     }
   }
+
+
+
+
+  .select2-container{
+    font-family: "Open Sans";
+    font-size: 14px;
+    .select2-dropdown{
+      box-shadow: 0px 10px 25px 0px rgba(0, 0, 0, 0.3);
+    }
+  }
+
 }
 
 
@@ -1864,10 +1882,14 @@ $maket320: 800px;
         stroke-width: 2px;
         stroke: #afafaf;
         position: absolute;
+        z-index: 0;
         right: 3px;
         top: 60%;
         transform: translateY(-50%) rotate(180deg);
       }
+    }
+    .select2-hidden-accessible .selectRow .icon{
+      
     }
     select{
       cursor: pointer;
@@ -1881,11 +1903,41 @@ $maket320: 800px;
       height: 30px;
       border-bottom: 1px solid #afafaf;
       width: 100%;
+      position: relative;
+      z-index: 1;
+      background: transparent;
       option{
         padding: 2px 10px;
       }
       @media only screen and (max-width: $maket800){
         font-size: 14px;
+      }
+    }
+    .select2-container--default .select2-selection--single{
+      cursor: pointer;
+      padding-right: 15px;
+      box-sizing: border-box;
+      font-size: 16px;
+      line-height: 28px;
+      color: #474747;
+      border: none;
+      padding: 5px 0px 0;
+      height: 30px;
+      border-bottom: 1px solid #afafaf;
+      width: 100%;
+      text-align: left;
+      border-radius: 0;
+      padding: 0;
+      background: #fff;
+      position: relative;
+      z-index: 1;
+      .select2-selection__rendered{
+        padding: 0;
+        padding-top: 4px;
+        box-sizing: border-box;
+        height: 30px;
+      }
+      .select2-selection__arrow{
       }
     }
 
@@ -1999,8 +2051,6 @@ $maket320: 800px;
       display: block;
     }
   }
-
-
 
 }
 

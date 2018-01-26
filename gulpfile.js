@@ -79,6 +79,7 @@ gulp.task('libs:build', function() {
         'src/libsSrc/jquery/dist/jquery.min.js',
         'src/libsSrc/magnific-popup/dist/jquery.magnific-popup.min.js',
         'src/libsSrc/gsap/src/minified/TweenMax.min.js',
+        'src/libsSrc/select2/dist/js/select2.js',
         //'src/libsSrc/gsap/src/minified/plugins/ColorPropsPlugin.min.js',
         'src/libsSrc/gsap/src/minified/plugins/ScrollToPlugin.min.js',
         //'src/libsSrc/jquery-selectric/public/jquery.selectric.js',
