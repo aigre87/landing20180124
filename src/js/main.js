@@ -185,19 +185,16 @@
       var $inpt = $(this).closest(".rulesBlock").find("input")
       $inpt.prop( "checked",  !$inpt.is(':checked') );
       $inpt.trigger("change");
-    })
+    });
 
+    $(".formToggleButton").on("click", function(){
+      var $hiddenForm = $(".formBlock form.hidden"),
+          $visibleForm = $forms.not($hiddenForm);
+          $block = $(".formBlock");
+          startH = $block.outerHeight();
 
-    $forms.on('submit', function(event) {
-      var $thisForm = $(this),
-          submit = $thisForm.find("input[type='submit']");
-      if (submit.hasClass("loading")) { return false; }
-
-      if( $thisForm.hasClass("hidden") ){
-        var $block = $(".formBlock");
-        var startH = $block.outerHeight();
-        $forms.not($thisForm).addClass("hidden");
-        $thisForm.removeClass("hidden");
+        $visibleForm.addClass("hidden");
+        $hiddenForm.removeClass("hidden");
         var endH = $block.outerHeight();
         TweenMax.set($block, { height: startH });
         TweenMax.to($block, 0.2, {
@@ -206,9 +203,13 @@
                 TweenMax.set($block, { clearProps: "all" });
             }
         });
+    });
 
-        return false;
-      }
+
+    $forms.on('submit', function(event) {
+      var $thisForm = $(this),
+          submit = $thisForm.find("input[type='submit']");
+      if (submit.hasClass("loading")) { return false; }
 
       if (
         $thisForm.find("input.ajax:not(.complete)").length > 0 ||

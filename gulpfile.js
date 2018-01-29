@@ -231,7 +231,7 @@ gulp.task('build', [
 ], function(){
     browserSync.init({
         server: "./build",
-        tunnel: true,
+        tunnel: false,
         port: 3000,
         ghostMode: false
     });
